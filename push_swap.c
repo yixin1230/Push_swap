@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 09:14:39 by yizhang       #+#    #+#                 */
-/*   Updated: 2022/12/19 11:46:17 by yizhang       ########   odam.nl         */
+/*   Updated: 2022/12/19 11:59:10 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ int	find_error(char **str, int argc)
 	int	j;
 
 	i = 1;
-	while(str[i] < argc)
-	[
+	while(i < argc)
+	{
 		j = i + 1;
 		while (j < argc)
 		{
-			if (strlen(str[i]) == strlen(str[j]))
+			if (ft_strlen(str[i]) == ft_strlen(str[j]))
 			{
-				if (ft_strncmp(str[i],str[j],strlen(str[i])) == 0)
+				if (ft_strncmp(str[i], str[j], ft_strlen(str[i])) == 0)
 				{
 					ft_printf("Error\n");
 					return (-1);
@@ -41,7 +41,7 @@ int	find_error(char **str, int argc)
 			return(-1);
 		}
 		i++;
-	]
+	}
 	return (0);
 }
 
@@ -68,7 +68,7 @@ int	main(int argc, char **argv)
 	i = 1;
 	if (argc <= 1)
 		return (0);
-	if(find_error(argv) == -1)
+	if(find_error(argv, argc) == -1)
 		return (0);
 	else
 		ft_pirntf("ok");

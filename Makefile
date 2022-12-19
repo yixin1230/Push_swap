@@ -6,7 +6,7 @@
 #    By: yizhang <yizhang@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/12/19 09:14:33 by yizhang       #+#    #+#                  #
-#    Updated: 2022/12/19 11:53:32 by yizhang       ########   odam.nl          #
+#    Updated: 2022/12/19 12:40:48 by yizhang       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,18 +15,14 @@ CC = gcc
 FLAGS = -Wall -Werror -Wextra
 FT_PRINTF = ft_printf/libftprintf.a
 SRC = push_swap.c
-OBJ = ${SRC:.c=.o}
 
 all:${NAME}
 
-${NAME}:${OBJ} ${FT_PRINTF}
-		make -C ft_printf
-		cp ${FT_PRINTF} ${NAME}
-		${CC} ${FLAGS} ${OBJ} ${NAME}
+${NAME}:${SRC} ${FT_PRINTF}
+		${CC} ${FLAGS} ${SRC} ${FT_PRINTF} -o ${NAME}
 
-%.o:%.c
-		${CC} ${FLAGS} -c $< -o $@
-	
+${FT_PRINTF}:
+	make -C ft_printf
 clean:
 	rm -rf ${OBJ}
 	make clean -C ft_printf
