@@ -6,7 +6,7 @@
 #    By: yizhang <yizhang@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/12/19 09:14:33 by yizhang       #+#    #+#                  #
-#    Updated: 2023/01/03 13:44:25 by yizhang       ########   odam.nl          #
+#    Updated: 2023/01/03 17:17:28 by yizhang       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 CC = gcc
 FLAGS = -Wall -Werror -Wextra
 FT_PRINTF = ft_printf/libftprintf.a
-SRC = push_swap.c find_error.c
+SRC = push_swap.c find_error_fill_stack.c create_data.c
 
 all:${NAME}
 

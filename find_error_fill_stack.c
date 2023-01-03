@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   find_error.c                                       :+:    :+:            */
+/*   find_error_fill_stack.c                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/12/19 14:19:55 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/03 16:27:24 by yizhang       ########   odam.nl         */
+/*   Created: 2023/01/03 16:29:02 by yizhang       #+#    #+#                 */
+/*   Updated: 2023/01/03 18:06:06 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,28 +62,28 @@ static void	add_back(t_node **top, t_node *new)
 	curr->next = new;
 }
 
-int	fill_stack_a(char **str, int argc, t_node **stack_a)
+int	fill_stack_a(t_data *all)
 {
 	long	i;
 	long	j;
 	long	nb;
 
 	i = 1;
-	while (i < argc)
+	while (i < all->argc)
 	{
 		j = i + 1;
-		if (find_non_int(str[i]) == -1)
+		if (find_non_int(all->argv[i]) == -1)
 			return (ft_printf("1error"), -1);
-		nb = ft_atoi(str[i]);
-		while (j < argc)
+		nb = ft_atoi(all->argv[i]);
+		while (j < all->argc)
 		{
-			if (nb == ft_atoi(str[j]))
+			if (nb == ft_atoi(all->argv[j]))
 				return (ft_printf("2error"), -1);
 			j++;
 		}
 		if (nb >= MAX_INT || nb < MIN_INT)
 			return (ft_printf("3error"), -1);
-		add_back(stack_a, newnode(nb));
+		add_back(&all->a, newnode(nb));
 		i++;
 	}
 	return (1);
