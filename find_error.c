@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 14:19:55 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/03 15:28:48 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/03 16:27:24 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,16 @@ static int	find_non_int(char *str)
 		i++;
 	while (str[i] && (str[i] < '9' && str[i] > '0'))
 		i++;
-	if (str[i] == '\0' && (str[i-1] != '-' || str[i-1] != '+'))
+	if (str[i] == '\0' && (str[i - 1] != '-' || str[i - 1] != '+'))
 		return (1);
-	
 	return (-1);
 }
 
-static node	*newnode(long nb)
+static t_node	*newnode(long nb)
 {
-	node *new;
+	t_node	*new;
 
-	new = malloc(sizeof(node));
+	new = malloc(sizeof(t_node));
 	if (!new)
 		return (NULL);
 	new->content = nb;
@@ -46,9 +45,9 @@ static node	*newnode(long nb)
 	return (new);
 }
 
-static void	add_back(node **top, node *new)
+static void	add_back(t_node **top, t_node *new)
 {
-	node *curr;
+	t_node	*curr;
 
 	curr = *top;
 	if (!new)
@@ -63,7 +62,7 @@ static void	add_back(node **top, node *new)
 	curr->next = new;
 }
 
-int	fill_stack_a(char **str, int argc, node **stack_a)
+int	fill_stack_a(char **str, int argc, t_node **stack_a)
 {
 	long	i;
 	long	j;
@@ -72,7 +71,7 @@ int	fill_stack_a(char **str, int argc, node **stack_a)
 	i = 1;
 	while (i < argc)
 	{
-		j = i + 1;		
+		j = i + 1;
 		if (find_non_int(str[i]) == -1)
 			return (ft_printf("1error"), -1);
 		nb = ft_atoi(str[i]);
@@ -87,6 +86,5 @@ int	fill_stack_a(char **str, int argc, node **stack_a)
 		add_back(stack_a, newnode(nb));
 		i++;
 	}
-	add_back(stack_a, newnode(nb));
 	return (1);
 }
