@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 09:14:39 by yizhang       #+#    #+#                 */
-/*   Updated: 2022/12/19 14:28:33 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/03 15:24:16 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,18 @@
 
 int	main(int argc, char **argv)
 {
-	int	i;
+	node	*stack_a;
 
-	i = 1;
-	if (argc <= 1)
+	stack_a = NULL;
+	if (argc <= 1 || fill_stack_a(argv, argc, &stack_a) == -1)
 		return (0);
-	if(find_error(argv, argc) == -1)
+	if(!stack_a)
 		return (0);
 	else
+	{
+		for(node *curr = stack_a; curr->next != NULL; curr=curr->next)
+			ft_printf("%i ",curr->content);
+	}
 		ft_printf("ok");
 	return(0);
 }

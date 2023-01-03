@@ -6,7 +6,7 @@
 /*   By: yizhang <zhaozicen951230@gmail.com>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/04 18:24:30 by yizhang       #+#    #+#                 */
-/*   Updated: 2022/11/18 15:52:36 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/03 12:36:50 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
-int		ft_atoi(const char *str);
 int		ft_lstsize(t_list *lst);
 
 size_t	ft_strlen(const char *str);
@@ -72,5 +71,7 @@ char	**ft_split(char const *s, char c);
 t_list	*ft_lstnew(void *content);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+long int		ft_atoi(const char *str);
 
 #endif
