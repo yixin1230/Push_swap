@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/03 16:29:02 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/03 18:06:06 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/03 19:38:04 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static t_node	*newnode(long nb)
 		return (NULL);
 	new->content = nb;
 	new->next = NULL;
+	new->prev = NULL;
 	return (new);
 }
 
@@ -60,6 +61,7 @@ static void	add_back(t_node **top, t_node *new)
 	while (curr->next != NULL)
 		curr = curr->next;
 	curr->next = new;
+	new->prev = curr;
 }
 
 int	fill_stack_a(t_data *all)
