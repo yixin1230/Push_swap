@@ -35,5 +35,7 @@ typedef struct datas
 
 int		fill_stack_a(t_data	*all);
 t_data	*create_data(char **argv, int argc);
+t_node	*newnode(long nb);
+void	add_back(t_node **top, t_node *new);
 
 #endif

@@ -10,3 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
+#include <unistd.h>
+
+void	do_sa(t_data *all)
+{
+	long	tmp;
+
+	if (!all->a)
+		return ;
+	tmp = all->a->content;
+	all->a->content = all->a->next->content;
+	all->a->next->content = tmp;
+	write(1, "sa\n", 3);
+}

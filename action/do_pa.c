@@ -10,3 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+#include "push_swap.h"
+
+void	do_pa(t_data *all)
+{
+	t_node	*new;
+
+	new = newnode
+	if (!all->b)
+		return ;
+	all->b
+}

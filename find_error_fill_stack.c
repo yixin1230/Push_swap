@@ -33,37 +33,6 @@ static int	find_non_int(char *str)
 	return (-1);
 }
 
-static t_node	*newnode(long nb)
-{
-	t_node	*new;
-
-	new = malloc(sizeof(t_node));
-	if (!new)
-		return (NULL);
-	new->content = nb;
-	new->next = NULL;
-	new->prev = NULL;
-	return (new);
-}
-
-static void	add_back(t_node **top, t_node *new)
-{
-	t_node	*curr;
-
-	curr = *top;
-	if (!new)
-		return ;
-	if (!*top)
-	{
-		*top = new;
-		return ;
-	}
-	while (curr->next != NULL)
-		curr = curr->next;
-	curr->next = new;
-	new->prev = curr;
-}
-
 int	fill_stack_a(t_data *all)
 {
 	long	i;
@@ -83,7 +52,7 @@ int	fill_stack_a(t_data *all)
 				return (ft_printf("2error"), -1);
 			j++;
 		}
-		if (nb >= MAX_INT || nb < MIN_INT)
+		if (nb >= MAX_INT || nb <= MIN_INT)
 			return (ft_printf("3error"), -1);
 		add_back(&all->a, newnode(nb));
 		i++;
