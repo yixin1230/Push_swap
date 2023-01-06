@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   push_swap.c                                        :+:    :+:            */
+/*   do_sa.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/12/19 09:14:39 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/06 13:00:49 by yizhang       ########   odam.nl         */
+/*   Created: 2023/01/03 19:42:24 by yizhang       #+#    #+#                 */
+/*   Updated: 2023/01/06 13:00:19 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "push_swap.h"
-#include "ft_printf/ft_printf.h"
 
-
-
-static void	see_the_stack(t_node *link)
+void	do_sa(t_data *all)
 {
-	for(t_node *curr = link; curr != NULL; curr = curr->next)
-		ft_printf("%i, ", curr->content);
-	ft_printf("\n");
-}
+	long	tmp;
 
-int	main(int argc, char **argv)
-{
-	t_data	*all;
-
-	all = create_data(argv, argc);
-	if (argc <= 1 || fill_stack_a(all) == -1)
-		return (0);
 	if (!all->a)
-		return (0);
-	do_sa(all);
-	see_the_stack(all->a);
-	
-	ft_printf("ok");
-	return (0);
+		return ;
+	tmp = all->a->content;
+	all->a->content = all->a->next->content;
+	all->a->next->content = tmp;
+	write(1, "sa\n", 3);
 }

@@ -1,28 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   create_data.c                                      :+:    :+:            */
+/*   node_utils.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/01/03 16:49:48 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/06 10:45:01 by yizhang       ########   odam.nl         */
+/*   Created: 2023/01/05 20:39:47 by yizhang       #+#    #+#                 */
+/*   Updated: 2023/01/06 12:46:24 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
 
-t_data	*create_data(char **argv, int argc)
-{
-	t_data	*all;
+t_node	*newnode(long nb);
+void	add_back(t_node **top, t_node *new);
 
-	all = malloc(sizeof(t_data));
-	if (!all)
+t_node	*newnode(long nb)
+{
+	t_node	*new;
+
+	new = malloc(sizeof(t_node));
+	if (!new)
 		return (NULL);
-	all->a = NULL;
-	all->b = NULL;
-	all->argv = argv;
-	all->argc = argc;
-	return (all);
+	new->content = nb;
+	new->next = NULL;
+	new->prev = NULL;
+	return (new);
+}
+
+void	add_back(t_node **top, t_node *new)
+{
+	t_node	*curr;
+
+	curr = *top;
+	if (!new)
+		return ;
+	if (!*top)
+	{
+		*top = new;
+		return ;
+	}
+	while (curr->next != NULL)
+		curr = curr->next;
+	curr->next = new;
+	new->prev = curr;
 }

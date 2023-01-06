@@ -1,39 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   push_swap.c                                        :+:    :+:            */
+/*   link_del_top.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/12/19 09:14:39 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/06 13:00:49 by yizhang       ########   odam.nl         */
+/*   Created: 2023/01/06 10:15:13 by yizhang       #+#    #+#                 */
+/*   Updated: 2023/01/06 12:25:05 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf/ft_printf.h"
+#include <stdlib.h>
 
-
-
-static void	see_the_stack(t_node *link)
+void	link_del_top(t_data *all, char stack_name)
 {
-	for(t_node *curr = link; curr != NULL; curr = curr->next)
-		ft_printf("%i, ", curr->content);
-	ft_printf("\n");
-}
+	t_node	**top;
 
-int	main(int argc, char **argv)
-{
-	t_data	*all;
-
-	all = create_data(argv, argc);
-	if (argc <= 1 || fill_stack_a(all) == -1)
-		return (0);
-	if (!all->a)
-		return (0);
-	do_sa(all);
-	see_the_stack(all->a);
-	
-	ft_printf("ok");
-	return (0);
 }

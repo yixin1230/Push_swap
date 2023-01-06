@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 09:16:21 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/03 19:00:47 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/06 12:55:31 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 # define MAX_INT 2147483647
 # define MIN_INT -2147483648
 
-# include "push_swap.h"
-# include "ft_printf/ft_printf.h"
+
 
 typedef struct nodes
 {
@@ -35,5 +34,10 @@ typedef struct datas
 
 int		fill_stack_a(t_data	*all);
 t_data	*create_data(char **argv, int argc);
+t_node	*newnode(long nb);
+void	add_back(t_node **top, t_node *new);
+void	do_sa(t_data *all);
+/* void	do_sb(t_data *all);
+void	do_ss(t_data *all); */
 
 #endif
