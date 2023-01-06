@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 09:16:21 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/06 17:52:30 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/06 18:47:00 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ void	do_rr(t_data *all);
 void	do_rra(t_data *all);
 void	do_rrb(t_data *all);
 void	do_rrr(t_data *all);
-
+long	stack_len(t_node **top);
+void	less_than_5(t_data *all);
 #endif

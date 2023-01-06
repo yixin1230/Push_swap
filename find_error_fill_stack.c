@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/03 16:29:02 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/06 10:51:07 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/06 18:53:12 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	find_non_int(char *str)
 		i++;
 	if (str[i] == '\0')
 		return (-1);
-	while (str[i] && (str[i] < '9' && str[i] > '0'))
+	while (str[i] && (str[i] <= '9' && str[i] >= '0'))
 		i++;
 	if (str[i] == '\0' && (str[i - 1] != '-' || str[i - 1] != '+'))
 		return (1);

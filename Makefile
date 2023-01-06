@@ -6,7 +6,7 @@
 #    By: yizhang <yizhang@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/12/19 09:14:33 by yizhang       #+#    #+#                  #
-#    Updated: 2023/01/06 17:52:42 by yizhang       ########   odam.nl          #
+#    Updated: 2023/01/06 18:47:18 by yizhang       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ FLAGS = -Wall -Werror -Wextra
 FT_PRINTF = ft_printf/libftprintf.a
 SRC =	push_swap.c find_error_fill_stack.c create_data.c node_utils.c \
 		do_sa.c do_sb.c do_ss.c do_ra.c do_rb.c do_rr.c do_rra.c do_rrb.c \
-		do_rrr.c do_pa.c do_pb.c link_del_top.c link_add_top.c 
+		do_rrr.c do_pa.c do_pb.c link_del_top.c link_add_top.c less_than_5.c
 
 all:${NAME}
 

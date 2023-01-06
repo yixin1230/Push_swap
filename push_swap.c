@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 09:14:39 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/06 17:50:42 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/06 18:54:12 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,8 @@ int	main(int argc, char **argv)
 		return (0);
 	if (!all->a)
 		return (0);
-	//do_sa(all);
-	//link_del_top(all,'a');
-	do_pb(all);
-	do_pb(all);
-	do_ra(all);
-	do_rra(all);
-	do_rrb(all);
-	ft_printf("a: "); see_the_stack(all->a);
+	less_than_5(all);
+	ft_printf("len: %i,a: ",stack_len(&all->a)); see_the_stack(all->a);
 	ft_printf("b: "); see_the_stack(all->b);
-	ft_printf("ok");
 	return (0);
 }
