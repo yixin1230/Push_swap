@@ -6,7 +6,8 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/03 19:42:24 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/03 19:42:26 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/03 19:51:31 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
