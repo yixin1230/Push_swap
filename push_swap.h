@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 09:16:21 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/06 16:52:16 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/06 17:52:30 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct datas
 	t_node	*b;
 	char	**argv;
 	int		argc;
+	int		do_write;
 }t_data;
 
 int		fill_stack_a(t_data	*all);
@@ -43,5 +44,11 @@ void	do_pa(t_data *all);
 void	do_pb(t_data *all);
 void	link_del_top(t_data *all, char stack_name);
 void	link_add_top(t_data *all, char stack_name, long nb);
+void	do_ra(t_data *all);
+void	do_rb(t_data *all);
+void	do_rr(t_data *all);
+void	do_rra(t_data *all);
+void	do_rrb(t_data *all);
+void	do_rrr(t_data *all);
 
 #endif
