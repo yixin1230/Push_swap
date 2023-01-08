@@ -29,6 +29,9 @@ typedef struct datas
 	char	**argv;
 	int		argc;
 	int		do_write;
+	long	min;
+	long	max;
+	long	med;
 }t_data;
 
 int		fill_stack_a(t_data	*all);
@@ -51,6 +54,8 @@ void	do_rrr(t_data *all);
 long	stack_len(t_node **top);
 long	is_storted(t_data	*all);
 void	less_than_5(t_data *all);
+void	find_min(t_data *all, char stackname);
+void	find_max(t_data *all, char stackname);
 
 void	free_stack_a(t_data *all);
 void	free_stack_b(t_data *all);

@@ -45,23 +45,29 @@ static void	solve_3(t_data *all)
 		do_rra(all);
 }
 
-static void	solve_5(t_data *all)//problem need to fix
+static void	solve_4(t_data *all)
 {
-	t_node	*curr;
-
-	curr = all->a;
-	do_pb(all);
+	all->min = all->a->content;
+	find_min(all, 'a');
+	while (all->a->content != all->min)
+		do_ra(all);
 	do_pb(all);
 	solve_3(all);
 	do_pa(all);
-	do_pa(all);
-	if (all->b->content < all->b->next->content)
-		do_sa(all);
-	while (curr->content > curr->next->content)
-	{
+}
+
+static void	solve_5(t_data *all)
+{
+	all->min = all->a->content;
+	find_min(all, 'a');
+	while (all->a->content != all->min)
 		do_ra(all);
-		curr = curr->next;
-	}
+	do_pb(all);
+	find_min(all, 'a');
+	while (all->a->content != all->min)
+		do_ra(all);
+	do_pb(all);
+	solve_3(all);
 	do_pa(all);
 	do_pa(all);
 }
@@ -77,8 +83,8 @@ void	less_than_5(t_data *all)
 		solve_2(all);
 	else if (len == 3)
 		solve_3(all);
-	/* else if (len == 4)
-		solve_4(all); */
+	else if (len == 4)
+		solve_4(all);
 	else if (len == 5)
 		solve_5(all);
 }

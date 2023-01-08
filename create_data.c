@@ -25,5 +25,8 @@ t_data	*create_data(char **argv, int argc)
 	all->argv = argv;
 	all->argc = argc;
 	all->do_write = 0;
+	all->min = 0;
+	all->max = 0;
+	all->med = 0;
 	return (all);
 }

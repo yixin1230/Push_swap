@@ -17,7 +17,7 @@
 
 static void	see_the_stack(t_node *link)
 {
-	for(t_node *curr = link; curr != NULL; curr = curr->next)
+	for (t_node *curr = link; curr != NULL; curr = curr->next)
 		ft_printf("%i, ", curr->content);
 	ft_printf("\n");
 }
@@ -27,23 +27,19 @@ int	main(int argc, char **argv)
 	t_data	*all;
 
 	all = create_data(argv, argc);
-	if (argc <= 1 || fill_stack_a(all) == -1)//把数据放到stack a；
+	if (argc <= 1 || fill_stack_a(all) == -1)
 		return (0);
 	if (!all->a)
 		return (0);
 	if (is_storted(all))
-	{
-		free_all(all);
-		ft_printf("is sorted\n");
-	}
-	//if (is_sorted(all->a)) free stack a;
+		return (free_all(all), 0);
 	//stort stack，如果len<=5用less_than_5,如果大于5，用radix.
 	//free all
 	//test:
-	//less_than_5(all);
+	less_than_5(all);
 	ft_printf("len: %i,a: ", stack_len(&all->a));
 	see_the_stack(all->a);
 	ft_printf("b: ");
 	see_the_stack(all->b);
-	return (0);
+	return (free_all(all), 0);
 }
