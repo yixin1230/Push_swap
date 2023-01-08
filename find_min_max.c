@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   find_min_max_med.c                                 :+:    :+:            */
+/*   find_min_max.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/01/08 20:31:13 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/08 20:31:13 by yizhang       ########   odam.nl         */
+/*   Created: 2023/01/08 23:07:07 by yizhang       #+#    #+#                 */
+/*   Updated: 2023/01/08 23:07:07 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
+
 void	find_min(t_data *all, char stackname);
 void	find_max(t_data *all, char stackname);
 
@@ -30,12 +31,11 @@ void	find_min(t_data *all, char stackname)
 			all->min = stack->content;
 		stack = stack->next;
 	}
-	printf("min:%li\n", all->min);
 }
 
 void	find_max(t_data *all, char stackname)
 {
-		t_node	*stack;
+	t_node	*stack;
 
 	if (stackname == 'a')
 		stack = all->a;
@@ -49,5 +49,3 @@ void	find_max(t_data *all, char stackname)
 		stack = stack->next;
 	}
 }
-
-//find_med(t_data *all, char stackname)

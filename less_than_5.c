@@ -58,10 +58,11 @@ static void	solve_4(t_data *all)
 
 static void	solve_5(t_data *all)
 {
-	all->min = all->a->content;
 	find_min(all, 'a');
 	while (all->a->content != all->min)
 		do_ra(all);
+	if (is_storted(all))
+		return ;
 	do_pb(all);
 	find_min(all, 'a');
 	while (all->a->content != all->min)
