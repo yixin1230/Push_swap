@@ -15,8 +15,6 @@
 # define MAX_INT 2147483647
 # define MIN_INT -2147483648
 
-
-
 typedef struct nodes
 {
 	long			content;
@@ -51,5 +49,10 @@ void	do_rra(t_data *all);
 void	do_rrb(t_data *all);
 void	do_rrr(t_data *all);
 long	stack_len(t_node **top);
+long	is_storted(t_data	*all);
 void	less_than_5(t_data *all);
+
+void	free_stack_a(t_data *all);
+void	free_stack_b(t_data *all);
+void	free_all(t_data *all);
 #endif

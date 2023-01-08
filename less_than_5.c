@@ -18,7 +18,7 @@ static void	solve_2(t_data *all)
 		do_sa(all);
 }
 
-static void solve_3(t_data *all)
+static void	solve_3(t_data *all)
 {
 	long	a;
 	long	b;
@@ -45,7 +45,7 @@ static void solve_3(t_data *all)
 		do_rra(all);
 }
 
-static void solve_5(t_data *all)//problem need to fix
+static void	solve_5(t_data *all)//problem need to fix
 {
 	t_node	*curr;
 
@@ -53,6 +53,8 @@ static void solve_5(t_data *all)//problem need to fix
 	do_pb(all);
 	do_pb(all);
 	solve_3(all);
+	do_pa(all);
+	do_pa(all);
 	if (all->b->content < all->b->next->content)
 		do_sa(all);
 	while (curr->content > curr->next->content)
@@ -60,6 +62,7 @@ static void solve_5(t_data *all)//problem need to fix
 		do_ra(all);
 		curr = curr->next;
 	}
+	do_pa(all);
 	do_pa(all);
 }
 

@@ -16,7 +16,8 @@ FLAGS = -Wall -Werror -Wextra
 FT_PRINTF = ft_printf/libftprintf.a
 SRC =	push_swap.c find_error_fill_stack.c create_data.c node_utils.c \
 		do_sa.c do_sb.c do_ss.c do_ra.c do_rb.c do_rr.c do_rra.c do_rrb.c \
-		do_rrr.c do_pa.c do_pb.c link_del_top.c link_add_top.c less_than_5.c
+		do_rrr.c do_pa.c do_pb.c link_del_top.c link_add_top.c less_than_5.c\
+		free_utils.c
 
 all:${NAME}
 

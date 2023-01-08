@@ -16,6 +16,21 @@
 t_node	*newnode(long nb);
 void	add_back(t_node **top, t_node *new);
 long	stack_len(t_node **top);
+long	is_storted(t_data	*all);
+
+long	is_storted(t_data	*all)
+{
+	t_node	*curr;
+
+	curr = all->a;
+	while (curr->next != NULL && curr != NULL)
+	{
+		if (curr->content > curr->next->content)
+			return (0);
+		curr = curr->next;
+	}
+	return (1);
+}
 
 long	stack_len(t_node **top)
 {

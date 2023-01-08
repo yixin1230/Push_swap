@@ -27,12 +27,23 @@ int	main(int argc, char **argv)
 	t_data	*all;
 
 	all = create_data(argv, argc);
-	if (argc <= 1 || fill_stack_a(all) == -1)
+	if (argc <= 1 || fill_stack_a(all) == -1)//把数据放到stack a；
 		return (0);
 	if (!all->a)
 		return (0);
-	less_than_5(all);
-	ft_printf("len: %i,a: ",stack_len(&all->a)); see_the_stack(all->a);
-	ft_printf("b: "); see_the_stack(all->b);
+	if (is_storted(all))
+	{
+		free_all(all);
+		ft_printf("is sorted\n");
+	}
+	//if (is_sorted(all->a)) free stack a;
+	//stort stack，如果len<=5用less_than_5,如果大于5，用radix.
+	//free all
+	//test:
+	//less_than_5(all);
+	ft_printf("len: %i,a: ", stack_len(&all->a));
+	see_the_stack(all->a);
+	ft_printf("b: ");
+	see_the_stack(all->b);
 	return (0);
 }

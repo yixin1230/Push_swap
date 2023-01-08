@@ -17,7 +17,7 @@ void	link_del_top(t_data *all, char stack_name)
 {
 	t_node	**top;
 	t_node	*tmp;
-	
+
 	if (stack_name == 'a')
 		top = &all->a;
 	else
