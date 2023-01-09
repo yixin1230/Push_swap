@@ -6,35 +6,67 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/08 23:06:09 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/08 23:06:09 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/09 10:47:26 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdlib.h>
+#include <stdio.h>
 
+void	find_med(t_data *all, char stackname);
 
-
-void	sort_array(long	*arr, int len)
+static long	*sort_array(long	*arr, long len)
 {
+	long	i;
+	long	j;
+	long	tmp;
 
+	i = 0;
+	while (i < len)
+	{
+		j = i + 1;
+		while (j < len)
+		{
+			if (arr[i] > arr[j])
+			{
+				tmp = arr[j];
+				arr[j] = arr[i];
+				arr[i] = tmp;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (arr);
 }
 
-void	find_med(t_data *all, t_node *stack)
+void	find_med(t_data *all, char stackname)
 {
 	long	*arr;
 	long	len;
-	long	med;
+	long	i;
+	t_node	*stack;
 
-	len = stack_len(&all->a);
-	arr = mallc(sizeof(int) * len);
+	if(stackname == 'a')
+		stack = all->a;
+	else
+		stack = all->b;
+	if (!stack)
+		return ;
+	len = stack_len(&stack);
+	arr = malloc(sizeof(int) * len);
+	i = 0;
 	if (!arr)
-		return (NULL);
-	while (len)
+		return ;
+	while (len > i)
 	{
-		arr[len] = stack->content;
+		arr[i] = stack->content;
 		stack = stack->next;
-		len--;
+		i++;
 	}
-
-	arr = NULL;
+	arr = sort_array(arr, len);
+	all->med = arr[len / 2];
+	//free(arr);
 }
+

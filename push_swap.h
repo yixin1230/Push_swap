@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 09:16:21 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/06 18:47:00 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/09 09:26:47 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,6 @@ void	find_max(t_data *all, char stackname);
 void	free_stack_a(t_data *all);
 void	free_stack_b(t_data *all);
 void	free_all(t_data *all);
+void	find_med(t_data *all, char stackname);
+
 #endif

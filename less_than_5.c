@@ -6,11 +6,12 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/03 18:53:39 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/06 19:25:38 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/09 10:51:23 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdlib.h>
 
 static void	solve_2(t_data *all)
 {
@@ -58,16 +59,15 @@ static void	solve_4(t_data *all)
 
 static void	solve_5(t_data *all)
 {
-	find_min(all, 'a');
-	while (all->a->content != all->min)
-		do_ra(all);
-	if (is_storted(all))
-		return ;
-	do_pb(all);
-	find_min(all, 'a');
-	while (all->a->content != all->min)
+	find_med(all, 'a');
+	while (all->a->content >= all->med)
 		do_ra(all);
 	do_pb(all);
+	while (all->a->content >= all->med)
+		do_ra(all);
+	do_pb(all);
+	if (all->b->content < all->b->next->content)
+		do_sb(all);
 	solve_3(all);
 	do_pa(all);
 	do_pa(all);

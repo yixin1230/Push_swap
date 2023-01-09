@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 09:14:39 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/06 18:54:12 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/09 10:32:14 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int	main(int argc, char **argv)
 	//free all
 	//test:
 	less_than_5(all);
-	ft_printf("len: %i,a: ", stack_len(&all->a));
+	//find_med(all,'a');
+	ft_printf("len: %i, med: %i, a: ", stack_len(&all->a),all->med);
 	see_the_stack(all->a);
 	ft_printf("b: ");
 	see_the_stack(all->b);
