@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 09:14:39 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/09 10:32:14 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/11 14:40:13 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void	see_the_stack(t_node *link)
 int	main(int argc, char **argv)
 {
 	t_data	*all;
+	long	len;
 
 	all = create_data(argv, argc);
 	if (argc <= 1 || fill_stack_a(all) == -1)
@@ -33,11 +34,14 @@ int	main(int argc, char **argv)
 		return (0);
 	if (is_storted(all))
 		return (free_all(all), 0);
+	len = stack_len(&all->a);
 	//stort stack，如果len<=5用less_than_5,如果大于5，用radix.
 	//free all
 	//test:
-	less_than_5(all);
-	//find_med(all,'a');
+	if (len <= 5)
+		less_than_5(all);
+	else
+		radix_sort(all);
 	ft_printf("len: %i, med: %i, a: ", stack_len(&all->a),all->med);
 	see_the_stack(all->a);
 	ft_printf("b: ");

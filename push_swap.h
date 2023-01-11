@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 09:16:21 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/09 09:26:47 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/09 11:46:09 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ void	free_stack_a(t_data *all);
 void	free_stack_b(t_data *all);
 void	free_all(t_data *all);
 void	find_med(t_data *all, char stackname);
+void	radix_sort(t_data *all);
 
 #endif
