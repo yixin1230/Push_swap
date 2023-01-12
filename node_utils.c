@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/05 20:39:47 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/12 11:54:32 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/12 19:11:08 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 
 t_node	*newnode(long nb);
-void	add_back(t_node *top, t_node *new);
+void	add_back(t_node **top, t_node *new);
 long	stack_len(t_node **top);
 long	is_storted(t_data	*all);
 
@@ -41,6 +41,7 @@ long	stack_len(t_node **top)
 	if (*top)
 	{
 		curr = *top;
+		len = 1;
 		curr = curr->next;
 		while (curr != *top)
 		{
@@ -64,11 +65,8 @@ t_node	*newnode(long nb)
 	return (new);
 }
 
-void	add_back(t_node *stack, t_node *new)
+void	add_back(t_node **top, t_node *new)
 {
-	t_node	**top;
-
-	top = &stack;
 	if (!new)
 		return ;
 	if (!*top)

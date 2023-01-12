@@ -6,13 +6,13 @@
 #    By: yizhang <yizhang@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/12/19 09:14:33 by yizhang       #+#    #+#                  #
-#    Updated: 2023/01/09 11:47:14 by yizhang       ########   odam.nl          #
+#    Updated: 2023/01/12 19:05:24 by yizhang       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CC = gcc
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra #-g -fsanitize=address
 FT_PRINTF = ft_printf/libftprintf.a
 SRC =	push_swap.c find_error_fill_stack.c create_data.c node_utils.c \
 		do_sa.c do_sb.c do_ss.c do_ra.c do_rb.c do_rr.c do_rra.c do_rrb.c \

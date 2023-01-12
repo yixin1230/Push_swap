@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/03 16:29:02 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/12 09:49:06 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/12 19:05:02 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	fill_stack_a(t_data *all)
 		}
 		if (nb >= MAX_INT || nb <= MIN_INT)
 			return (ft_printf("3error"), -1);
-		add_back(all->a, newnode(nb));
+		add_back(&all->a, newnode(nb));
 		i++;
 	}
 	return (1);
