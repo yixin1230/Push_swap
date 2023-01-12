@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/03 19:47:03 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/06 11:02:33 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/12 11:20:25 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 
 void	do_pa(t_data *all)
 {
+	long	tmp;
 	if (!all->b)
 		return ;
-	link_add_top(all, 'a', all->b->content);
+	tmp = all->b->content;
 	link_del_top(all, 'b');
+	link_add_top(all, 'a', tmp);
 	write(1, "pa\n", 3);
 }

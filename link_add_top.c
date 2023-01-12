@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/06 10:15:08 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/06 16:49:58 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/12 11:17:22 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,17 @@ void	link_add_top(t_data *all, char stack_name, long nb)
 		top = &all->a;
 	else
 		top = &all->b;
-	if (!*top)
+	if (*top)
 	{
-		*top = newnode(nb);
+		new = newnode(nb);
+		new->next = *top;
+		new->prev = (*top)->prev;
+		(*top)->prev = new;
+		(*top)->prev->next = new;
+		*top = (*top)->prev;
 		return ;
 	}	
-	new = newnode(nb);
-	(*top)->prev = new;
-	new->next = *top;
-	*top = new;
+	(*top) = newnode(nb);
+	(*top)->next = *top;
+	(*top)->prev = *top;
 }

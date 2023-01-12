@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/06 10:15:13 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/06 16:13:55 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/12 10:41:33 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,15 @@ void	link_del_top(t_data *all, char stack_name)
 		top = &all->b;
 	if (!*top)
 		return ;
-	if (!(*top)->next)
+	if ((*top)->next == *top)
 	{
 		free(*top);
 		*top = NULL;
 		return ;
-	}	
+	}
 	tmp = *top;
 	*top = (*top)->next;
-	(*top)->prev = NULL;
+	tmp->prev->next = (*top); 
+	(*top)->prev = tmp->prev;
 	free(tmp);
 }

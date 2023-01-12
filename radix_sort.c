@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/09 11:43:00 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/11 14:46:02 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/12 08:57:42 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	radix_sort(t_data *all)
 	while (i < max_bit)
 	{
 		j = 0;
-		while(j < size_a)
+		while(j < size_a && all->a)
 		{
-			if(((*all->a->content >> i) & 1) == 1)
+			if(((all->a->content >> i) & 1) == 1)
 				do_ra(all);
 			else
 				do_pb(all);
