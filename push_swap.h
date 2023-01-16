@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 09:16:21 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/12 19:03:32 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/16 10:02:50 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	do_ss(t_data *all);
 void	do_pa(t_data *all);
 void	do_pb(t_data *all);
 void	link_del_top(t_data *all, char stack_name);
-void	link_add_top(t_data *all, char stack_name, long nb);
+void	link_add_top(t_data *all, char stack_name, t_node *new);
 void	do_ra(t_data *all);
 void	do_rb(t_data *all);
 void	do_rr(t_data *all);

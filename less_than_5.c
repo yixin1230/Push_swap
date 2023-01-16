@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/03 18:53:39 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/09 10:51:23 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/16 11:55:07 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	solve_3(t_data *all)
 
 	a = all->a->content;
 	b = all->a->next->content;
-	c = all->a->next->next->content;
+	c = all->a->prev->content;
 	if (a > b && a < c && b < c)
 		do_sa(all);
 	else if (a > b && a > c && b > c)
@@ -48,10 +48,15 @@ static void	solve_3(t_data *all)
 
 static void	solve_4(t_data *all)
 {
-	all->min = all->a->content;
+	t_node	*tmp_a;
+
+	tmp_a = all->a;
 	find_min(all, 'a');
-	while (all->a->content != all->min)
+	while (tmp_a->content != all->min)
+	{
 		do_ra(all);
+		tmp_a = tmp_a->next;
+	}
 	do_pb(all);
 	solve_3(all);
 	do_pa(all);

@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/05 20:39:47 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/12 19:11:08 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/16 10:01:35 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,28 +56,29 @@ t_node	*newnode(long nb)
 {
 	t_node	*new;
 
-	new = malloc(sizeof(t_node));
+	new = (t_node *)malloc(sizeof(t_node));
 	if (!new)
 		return (NULL);
 	new->content = nb;
-	new->next = NULL;
-	new->prev = NULL;
+	new->next = new;
+	new->prev = new;
 	return (new);
 }
 
 void	add_back(t_node **top, t_node *new)
 {
 	if (!new)
-		return ;
-	if (!*top)
 	{
-		new->next = new;
-		new->prev = new;
-		*top = new;
 		return ;
 	}
-	new->next = *top;
-	new->prev = (*top)->prev;
-	new->prev->next = new;
-	(*top)->prev = new;
+	if (!*top)
+		(*top) = new;
+	else
+	{
+		new->next = *top;
+		new->prev = (*top)->prev;
+		new->prev->next = new;
+		(*top)->prev = new;
+	}
+
 }

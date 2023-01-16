@@ -6,32 +6,31 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/06 10:15:08 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/12 11:17:22 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/16 10:58:08 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	link_add_top(t_data *all, char stack_name, long nb)
+#include <stdlib.h>
+void	link_add_top(t_data *all, char stack_name, t_node *new)
 {
 	t_node	**top;
-	t_node	*new;
 
+	if (!new)
+		return ;
 	if (stack_name == 'a')
 		top = &all->a;
 	else
 		top = &all->b;
 	if (*top)
 	{
-		new = newnode(nb);
 		new->next = *top;
 		new->prev = (*top)->prev;
 		(*top)->prev = new;
-		(*top)->prev->next = new;
-		*top = (*top)->prev;
-		return ;
-	}	
-	(*top) = newnode(nb);
-	(*top)->next = *top;
-	(*top)->prev = *top;
+		new->prev->next = new;
+		*top = (*top)->prev;		
+	}
+	else
+		*top = new;
 }
+

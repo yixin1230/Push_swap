@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 09:14:39 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/12 19:25:06 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/16 11:22:02 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static void	see_the_stack(t_node **link)
 	t_node *curr;
 
 	if (!*link)
-		return ;
-	curr = *link;
+	return ;
+		curr = *link;
 	printf("%li, ", curr->content);
 	curr = curr->next;
 	while (curr != *link)
@@ -50,11 +50,15 @@ int	main(int argc, char **argv)
 		less_than_5(all);
 	else
 		radix_sort(all);
-	do_pb(all);
+	//do_pb(all);
+	//do_pb(all);
+	//link_add_top(all, 'b', newnode(all->a->content));
+	//link_add_top(all, 'b', newnode(all->a->content));
 	//do_pa(all);
-	//do_pa(all);
-	//find_max(all,'a');
-	printf("len: %li, max: %li, a: ", stack_len(&all->a),all->max);
+	find_max(all,'a');
+	find_min(all, 'a');
+	find_med(all,'a');
+	printf("len: %li, max: %li, min: %li, med: %li, a: ", stack_len(&all->a),all->max,all->min,all->med);
 	see_the_stack(&all->a);
 	printf("b: ");
 	see_the_stack(&all->b);

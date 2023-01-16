@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/03 19:45:04 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/06 10:12:37 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/16 11:26:01 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	do_sb(t_data *all)
 {
 	long	tmp;
 
-	if (!all->b)
+	if (!all->b && all->b->next != all->b)
 		return ;
 	tmp = all->b->content;
 	all->b->content = all->b->next->content;
