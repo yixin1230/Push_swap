@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/08 23:07:07 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/16 11:31:19 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/16 12:59:34 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ void	find_min(t_data *all, char stackname)
 	else
 		stack = all->b;
 	end = stack->prev;
-	all->min = all->max;
-	while (1)
+	all->min = stack->content;
+	while (stack != end)
 	{
 		if (stack->content < all->min)
 			all->min = stack->content;
-		if (stack == end)
-			break;
 		stack = stack->next;
 	}
+	if (stack->content < all->min)
+		all->min = stack->content;
 }
 
 void	find_max(t_data *all, char stackname)
