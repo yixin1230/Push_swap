@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   create_data.c                                      :+:    :+:            */
+/*   less_than_100.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/01/03 16:49:48 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/16 18:06:12 by yizhang       ########   odam.nl         */
+/*   Created: 2023/01/16 13:41:18 by yizhang       #+#    #+#                 */
+/*   Updated: 2023/01/16 16:42:05 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
 
-t_data	*create_data(char **argv, int argc)
+void	less_than_100(t_data *all)
 {
-	t_data	*all;
+	t_node	*top;
+	t_node	*end;
 
-	all = malloc(sizeof(t_data));
-	if (!all)
-		return (NULL);
-	all->a = NULL;
-	all->b = NULL;
-	all->argv = argv;
-	all->argc = argc;
-	all->do_write = 0;
-	all->min = 0;
-	all->max = 0;
-	all->med = 0;
-	return (all);
+	top = all->a;
+	end = all->a->prev;
+	find_med(all, 'a');
+	while (1)
+	{
+		if (top->content >= all->med)
+			do_ra(all);
+		else
+			do_pb(all);
+		
+		top = top->next;
+		if (top == end)
+			break ;
+	}
 }

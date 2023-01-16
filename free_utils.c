@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/08 19:34:18 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/16 08:39:09 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/16 13:42:32 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	free_stack_a(t_data *all)
 		free(delete);
 	}
 	free(track_next);
-		
 }
 
 void	free_stack_b(t_data *all)

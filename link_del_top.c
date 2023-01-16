@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/06 10:15:13 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/16 08:46:50 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/16 13:44:49 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	link_del_top(t_data *all, char stack_name)
 		{
 			tmp = *top;
 			*top = (*top)->next;
-			tmp->prev->next = *top; 
+			tmp->prev->next = *top;
 			(*top)->prev = tmp->prev;
 			free(tmp);
 		}

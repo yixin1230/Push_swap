@@ -6,13 +6,14 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/03 18:53:39 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/16 12:57:15 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/16 13:43:34 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
 #include<stdio.h>
+
 static void	solve_2(t_data *all)
 {
 	if (all->a->content > all->a->next->content)
@@ -52,12 +53,8 @@ static void	solve_4(t_data *all)
 
 	stack_a = all->a;
 	find_min(all, 'a');
-	printf("min:%li\n",all->min);
 	while (all->a->content > all->min)
-	{
 		do_ra(all);
-		//stack_a = stack_a->next;
-	}
 	do_pb(all);
 	solve_3(all);
 	do_pa(all);

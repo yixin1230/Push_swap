@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/05 20:39:47 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/16 10:01:35 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/16 17:39:08 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ t_node	*newnode(long nb)
 	new->content = nb;
 	new->next = new;
 	new->prev = new;
+	new->index = 0;
 	return (new);
 }
 
@@ -80,5 +81,4 @@ void	add_back(t_node **top, t_node *new)
 		new->prev->next = new;
 		(*top)->prev = new;
 	}
-
 }

@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/08 23:07:07 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/16 12:59:34 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/16 13:42:16 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	find_max(t_data *all, char stackname)
 		if (stack->content > all->max)
 			all->max = stack->content;
 		if (stack == end)
-			break;
+			break ;
 		stack = stack->next;
 	}
 }

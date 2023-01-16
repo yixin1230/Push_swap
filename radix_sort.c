@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/09 11:43:00 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/12 08:57:42 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/16 18:37:37 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,26 @@ void	radix_sort(t_data *all)
 	long	j;
 	long	max_bit;
 	long	size_a;
+	//t_node *curr;
 
 	i = 0;
-	find_max(all, 'a');
+	find_med(all, 'a');
 	max_bit = 0;
 	size_a = stack_len(&all->a);
-	while ((all->max >> max_bit) != 0)
+	while (((size_a - 1)>> max_bit) != 0)
 		max_bit++;
 	while (i < max_bit)
 	{
 		j = 0;
-		while(j < size_a && all->a)
+		while(j < size_a)
 		{
-			if(((all->a->content >> i) & 1) == 1)
+			if(((all->a->index >> i) & 1) == 1)
 				do_ra(all);
 			else
 				do_pb(all);
 			j++;
 		}
-		while (all->b != NULL)
+		while (all->b != 0)
 			do_pa(all);
 		i++;
 	}

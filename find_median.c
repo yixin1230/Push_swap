@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/08 23:06:09 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/09 10:47:26 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/16 18:23:25 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ void	find_med(t_data *all, char stackname)
 	long	*arr;
 	long	len;
 	long	i;
+	long	j;
 	t_node	*stack;
 
-	if(stackname == 'a')
+	if (stackname == 'a')
 		stack = all->a;
 	else
 		stack = all->b;
@@ -57,6 +58,7 @@ void	find_med(t_data *all, char stackname)
 	len = stack_len(&stack);
 	arr = malloc(sizeof(int) * len);
 	i = 0;
+	
 	if (!arr)
 		return ;
 	while (len > i)
@@ -67,6 +69,18 @@ void	find_med(t_data *all, char stackname)
 	}
 	arr = sort_array(arr, len);
 	all->med = arr[len / 2];
-	//free(arr);
+	i = 0;
+	while (len > i)
+	{
+		j = 0;
+		while (len > j)
+		{
+			if (arr[i] == stack->content)
+				stack->index = i;
+			stack = stack->next;
+			j++;
+		}
+		i++;
+	}
+	free(arr);
 }
-

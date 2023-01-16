@@ -6,12 +6,12 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/06 10:15:08 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/16 10:58:08 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/16 13:45:07 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
+
 void	link_add_top(t_data *all, char stack_name, t_node *new)
 {
 	t_node	**top;
@@ -28,9 +28,8 @@ void	link_add_top(t_data *all, char stack_name, t_node *new)
 		new->prev = (*top)->prev;
 		(*top)->prev = new;
 		new->prev->next = new;
-		*top = (*top)->prev;		
+		*top = (*top)->prev;
 	}
 	else
 		*top = new;
 }
-
