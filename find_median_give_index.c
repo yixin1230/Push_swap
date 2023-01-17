@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   find_median.c                                      :+:    :+:            */
+/*   find_median_give_index.c                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/01/08 23:06:09 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/16 18:23:25 by yizhang       ########   odam.nl         */
+/*   Created: 2023/01/17 16:13:43 by yizhang       #+#    #+#                 */
+/*   Updated: 2023/01/17 16:36:44 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	find_med(t_data *all, char stackname)
 	long	i;
 	long	j;
 	t_node	*stack;
+	t_node	*end;
 
 	if (stackname == 'a')
 		stack = all->a;
@@ -55,10 +56,10 @@ void	find_med(t_data *all, char stackname)
 		stack = all->b;
 	if (!stack)
 		return ;
+	end = stack->prev;
 	len = stack_len(&stack);
 	arr = malloc(sizeof(int) * len);
 	i = 0;
-	
 	if (!arr)
 		return ;
 	while (len > i)
@@ -70,12 +71,12 @@ void	find_med(t_data *all, char stackname)
 	arr = sort_array(arr, len);
 	all->med = arr[len / 2];
 	i = 0;
-	while (len > i)
+	while (i < len)
 	{
 		j = 0;
-		while (len > j)
+		while (j < len)
 		{
-			if (arr[i] == stack->content)
+			if (stack->content == arr[i])
 				stack->index = i;
 			stack = stack->next;
 			j++;
