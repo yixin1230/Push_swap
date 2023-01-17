@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/03 16:29:02 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/16 09:15:58 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/17 18:14:56 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,16 @@ int	fill_stack_a(t_data *all)
 	{
 		j = i + 1;
 		if (find_non_int(all->argv[i]) == -1)
-			return (ft_printf("1error"), -1);
+			return (ft_printf("Error"), -1);
 		nb = ft_atoi(all->argv[i]);
 		while (j < all->argc)
 		{
 			if (nb == ft_atoi(all->argv[j]))
-				return (ft_printf("2error"), -1);
+				return (ft_printf("Error"), -1);
 			j++;
 		}
 		if (nb >= MAX_INT || nb <= MIN_INT)
-			return (ft_printf("3error"), -1);
+			return (ft_printf("Error"), -1);
 		add_back(&all->a, newnode(nb));
 		i++;
 	}
