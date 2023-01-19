@@ -42,7 +42,7 @@ int	main(int argc, char **argv)
 		return (0);
 	if (!all->a)
 		return (0);
-	if (is_storted(all))
+	if (is_storted(all) == 1)
 	{
 		if (all->a)
 			free_stack_a(all);
@@ -54,4 +54,5 @@ int	main(int argc, char **argv)
 	else
 		radix_sort(all);
 	return (0);
+	system("leaks");
 }

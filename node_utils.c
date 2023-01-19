@@ -23,7 +23,7 @@ long	is_storted(t_data	*all)
 	t_node	*curr;
 
 	curr = all->a;
-	while (curr->next != NULL && curr != NULL)
+	while (curr != all->a->prev)
 	{
 		if (curr->content > curr->next->content)
 			return (0);

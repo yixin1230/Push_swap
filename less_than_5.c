@@ -49,9 +49,6 @@ static void	solve_3(t_data *all)
 
 static void	solve_4(t_data *all)
 {
-	t_node	*stack_a;
-
-	stack_a = all->a;
 	find_min(all, 'a');
 	while (all->a->content > all->min)
 		do_ra(all);
