@@ -21,13 +21,17 @@ long	is_storted(t_data	*all);
 long	is_storted(t_data	*all)
 {
 	t_node	*curr;
+	long	i;
 
 	curr = all->a;
+	i = 0;
+	find_med(all, 'a');
 	while (curr != all->a->prev)
 	{
-		if (curr->content > curr->next->content)
+		if (curr->index != i)
 			return (0);
 		curr = curr->next;
+		i++;
 	}
 	return (1);
 }
