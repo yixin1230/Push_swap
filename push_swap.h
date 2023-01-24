@@ -65,5 +65,5 @@ void	find_med(t_data *all, char stackname);
 void	radix_sort(t_data *all);
 void	less_than_100(t_data *all);
 void	simple_nb(t_data *all);
-
+void	print_error(t_data *all);
 #endif
