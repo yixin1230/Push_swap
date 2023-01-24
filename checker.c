@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 #include "ft_printf/libft/libft.h"
+#include <stdio.h>
 
 static int	flag_check(char *line, t_data *check)
 {
@@ -75,7 +76,7 @@ static int	flag_check(char *line, t_data *check)
 	return (-1);
 }
 
-char	*ps_get_next_line(int fd)
+int	ps_get_next_line(int fd, char **line)
 {
 	int		nb;
 	char	buff;
@@ -83,42 +84,58 @@ char	*ps_get_next_line(int fd)
 	int		i;
 
 	if (fd < 0)
-		return (NULL);
+		return (-1);
 	nb = 8;
 	i = 0;
 	while (nb < 0)
 	{
 		nb = read(fd, &buff, 1);
 		if (nb < 0)
-			return (NULL);
+			return (-1);
 		str[i] = buff;
 		i++;
 		if (buff == '\n')
 			break ;
 	}
 	str[i] = '\0';
-	return (ft_strdup(str));
+	*line = ft_strdup(str);
+	return (1);
 }
 
 void	checker(t_data *check)
 {
 	char	*line;
 
-	line = ps_get_next_line(0);
-	while (line != NULL)
+	while (ps_get_next_line(0, &line) != -1)
 	{
 		flag_check(line, check);
-		line = ps_get_next_line(0);
+		line = ps_get_next_line(0, &line);
 	}
 }
+static void	see_the_stack(t_node **link)
+{
+	t_node	*curr;
 
+	if (!*link)
+		return ;
+	curr = *link;
+	while (1)
+	{
+		printf("%li:%li, ", curr->index, curr->content);
+		curr = curr->next;
+		if (curr == *link)
+			break ;
+	}
+	printf("\n");
+}
 int	main(int argc, char **argv)
 {
 	t_data	*check;
 
 	check = create_data(argv, argc);
-	if (fill_stack_a(check) == -1)
+	if (argc <= 1 || fill_stack_a(check) == -1)
 		return (0);
+	see_the_stack(&check->a);
 	checker(check);
 	if (is_storted(check) == 1)
 		write(1, "OK\n", 3);

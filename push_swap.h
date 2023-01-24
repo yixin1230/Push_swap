@@ -66,6 +66,6 @@ void	radix_sort(t_data *all);
 void	less_than_100(t_data *all);
 void	simple_nb(t_data *all);
 void	checker(t_data *check);
-char	*ps_get_next_line(int fd);
+int		ps_get_next_line(int fd, char **line)
 
 #endif
