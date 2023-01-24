@@ -36,7 +36,7 @@ static int	find_non_int(char *str)
 	return (-1);
 }
 
-void	print_error(t_data *all)
+static void	print_error(t_data *all)
 {
 	write(1, "Error\n", 6);
 	if (all->a)
