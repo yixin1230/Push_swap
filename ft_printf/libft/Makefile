@@ -78,19 +78,19 @@ endif
 all: $(NAME)($(OBJ))
 
 bonus:
-	$(MAKE) WITH_BONUS=1
+	@$(MAKE) WITH_BONUS=1
 
 %.o: %.c $(HEADER)
-	$(COMPILE) -c $< -o $@ 
+	@$(COMPILE) -c $< -o $@ 
 
 $(NAME): $(OBJ)
-	$(ARCHIVE) $(NAME) $<
+	@$(ARCHIVE) $(NAME) $<
 
 clean:
-	$(RM) $(OBJ) $(OBJB)
+	@$(RM) $(OBJ) $(OBJB)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 
