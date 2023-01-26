@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 09:16:21 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/16 18:06:23 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/26 09:06:33 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,6 @@ void	radix_sort(t_data *all);
 void	less_than_100(t_data *all);
 void	simple_nb(t_data *all);
 void	checker(t_data *check);
-int		ps_get_next_line(int fd, char **line)
+int		ps_get_next_line(int fd, char **line);
 
 #endif

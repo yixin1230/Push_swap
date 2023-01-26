@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/08 19:34:18 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/16 13:42:32 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/26 09:25:36 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	free_stack_a(t_data *all)
 	if (!all->a)
 		return ;
 	track_next = all->a->next;
-	while (track_next != NULL)
+	while (track_next != all->a)
 	{
 		delete = track_next;
 		track_next = track_next->next;
@@ -42,7 +42,7 @@ void	free_stack_b(t_data *all)
 	if (!all->b)
 		return ;
 	track_next = all->b->next;
-	while (track_next != NULL)
+	while (track_next != all->b)
 	{
 		delete = track_next;
 		track_next = track_next->next;

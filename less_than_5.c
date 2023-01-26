@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/03 18:53:39 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/16 13:43:34 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/26 09:19:20 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static void	solve_3(t_data *all)
 
 static void	solve_4(t_data *all)
 {
-	find_min(all, 'a');
 	while (all->a->content > all->min)
 		do_ra(all);
 	do_pb(all);
@@ -59,7 +58,6 @@ static void	solve_4(t_data *all)
 
 static void	solve_5(t_data *all)
 {
-	find_med(all, 'a');
 	while (all->a->content >= all->med)
 		do_ra(all);
 	do_pb(all);
@@ -78,6 +76,7 @@ void	less_than_5(t_data *all)
 	long	len;
 
 	len = stack_len(&all->a);
+	find_med(all, 'a');
 	if (len == 1)
 		return ;
 	else if (len == 2)

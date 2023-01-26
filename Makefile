@@ -6,21 +6,21 @@
 #    By: yizhang <yizhang@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/12/19 09:14:33 by yizhang       #+#    #+#                  #
-#    Updated: 2023/01/17 16:18:04 by yizhang       ########   odam.nl          #
+#    Updated: 2023/01/26 09:39:43 by yizhang       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 B_NAME = checker
 CC = gcc
-FLAGS = -Wall -Werror -Wextra #-g -fsanitize=address
+FLAGS = -Wall -Werror -Wextra
 FT_PRINTF = ft_printf/libftprintf.a
 MAIN = push_swap.c
 B_MAIN = checker.c
 SRC =	find_error_fill_stack.c create_data.c node_utils.c \
 		do_sa.c do_sb.c do_ss.c do_ra.c do_rb.c do_rr.c do_rra.c do_rrb.c \
 		do_rrr.c do_pa.c do_pb.c link_del_top.c link_add_top.c less_than_5.c\
-		free_utils.c find_min_max.c find_median_give_index.c radix_sort.c 
+		free_utils.c find_med_min_max_give_index.c radix_sort.c 
 OBJ = ${SRC:.c=.o}
 
 all:${NAME}

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   find_median_give_index.c                           :+:    :+:            */
+/*   find_med_min_max_give_index.c                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/01/17 16:13:43 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/17 18:00:22 by yizhang       ########   odam.nl         */
+/*   Created: 2023/01/26 09:20:27 by yizhang       #+#    #+#                 */
+/*   Updated: 2023/01/26 09:38:35 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	find_med(t_data *all, char stackname);
 
-static long	*sort_array(long	*arr, long len)
+static void	sort_array(long	*arr, long len)
 {
 	long	i;
 	long	j;
@@ -38,7 +38,7 @@ static long	*sort_array(long	*arr, long len)
 		}
 		i++;
 	}
-	return (arr);
+	//return (arr);
 }
 
 static void	give_index(t_node *stack, long len, long	*arr)
@@ -61,12 +61,15 @@ static void	give_index(t_node *stack, long len, long	*arr)
 	}
 }
 
-static long	*fill_arr(long	*arr, t_node *stack, long len)
+static long	*fill_arr(t_node *stack, long len)
 {
 	long	i;
+	long	*arr;
 
 	i = 0;
-	arr = malloc(sizeof(int) * len);
+	if (len == 0 || !stack)
+		return (NULL);
+	arr = malloc(sizeof(long) * len);
 	if (!arr)
 		return (NULL);
 	while (len > i)
@@ -92,11 +95,13 @@ void	find_med(t_data *all, char stackname)
 		return ;
 	len = stack_len(&stack);
 	arr = NULL;
-	arr = fill_arr(arr, stack, len);
+	arr = fill_arr(stack, len);
 	if (!arr)
 		return ;
-	arr = sort_array(arr, len);
+	sort_array(arr, len);
 	all->med = arr[len / 2];
+	all->min = arr[0];
+	all->max = arr[len / 2];
 	give_index(stack, len, arr);
 	free(arr);
 }
