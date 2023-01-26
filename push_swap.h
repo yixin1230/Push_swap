@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 09:16:21 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/26 16:35:57 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/26 16:50:52 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct datas
 {
 	t_node	*a;
 	t_node	*b;
+	char	**ptr;
 	char	**argv;
 	int		argc;
 	int		do_write;

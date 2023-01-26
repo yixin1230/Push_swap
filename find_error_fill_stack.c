@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/03 16:29:02 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/26 16:39:14 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/26 16:56:21 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ static void	print_error(t_data *all)
 	write(1, "Error\n", 6);
 	if (all->a)
 		free_stack_a(all);
+	if (all->ptr)
+		free_ptr(all->ptr);
 	exit(1);
 }
 
@@ -76,19 +78,20 @@ static int	fill_stack_a_split(t_data *all)
 	size_t	i;
 	long	j;
 	long	nb;
-	char	**ptr;
 
 	i = 0;
-	ptr = ft_split(all->argv[1], ' ');
-	while (ptr[i])
+	all->ptr = ft_split(all->argv[1], ' ');
+	if (all->ptr[1] == NULL)
+		return (1);
+	while (all->ptr[i])
 	{
 		j = i + 1;
-		if (find_non_int(ptr[i]) == -1)
+		if (find_non_int(all->ptr[i]) == -1)
 			print_error(all);
-		nb = ft_atoi(ptr[i]);
+		nb = ft_atoi(all->ptr[i]);
 		while (j < all->argc)
 		{
-			if (nb == ft_atoi(ptr[j]))
+			if (nb == ft_atoi(all->ptr[j]))
 				print_error(all);
 			j++;
 		}
@@ -97,7 +100,7 @@ static int	fill_stack_a_split(t_data *all)
 		add_back(&all->a, newnode(nb));
 		i++;
 	}
-	return (free_ptr(ptr), 1);
+	return (free_ptr(all->ptr), 1);
 }
 
 int	fill_stack_a(t_data *all)
