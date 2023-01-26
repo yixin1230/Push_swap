@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/03 16:29:02 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/26 16:14:05 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/26 16:39:14 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static int	fill_stack_a_split(t_data *all)
 		add_back(&all->a, newnode(nb));
 		i++;
 	}
-	return (1);
+	return (free_ptr(ptr), 1);
 }
 
 int	fill_stack_a(t_data *all)
