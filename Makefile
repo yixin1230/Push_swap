@@ -6,14 +6,14 @@
 #    By: yizhang <yizhang@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/12/19 09:14:33 by yizhang       #+#    #+#                  #
-#    Updated: 2023/01/26 17:59:55 by yizhang       ########   odam.nl          #
+#    Updated: 2023/01/26 18:39:11 by yizhang       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 B_NAME = checker
 CC = gcc
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra #-g -fsanitize=address
 FT_PRINTF = ft_printf/libftprintf.a
 MAIN = push_swap.c
 B_MAIN = checker.c

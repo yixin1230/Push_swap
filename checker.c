@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/24 22:27:56 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/26 15:15:31 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/26 19:28:41 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	flag_check(char *line, t_data *check)
 		return (do_rb(check), 1);
 	else if (!ft_strncmp(line, "rr\n", 3))
 		return (do_rr(check), 1);
-	else if (!ft_strncmp(line, "rrb\n", 4))
+	else if (!ft_strncmp(line, "d\n", 4))
 		return (do_rrb(check), 1);
 	else if (!ft_strncmp(line, "rra\n", 4))
 		return (do_rra(check), 1);
@@ -62,12 +62,12 @@ int	main(int argc, char **argv)
 
 	check = create_data(argv, argc);
 	if (argc <= 1 || fill_stack_a(check) == -1)
-		return (0);
+		exit (1);
 	checker(check);
 	if (is_storted(check) == 1)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	free_stack_a(check);
-	return (0);
+	free_all(check);
+	exit (0);
 }
