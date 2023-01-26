@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   find_median.c                                      :+:    :+:            */
+/*   find_med_min_max_give_index.c                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/01/08 23:06:09 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/09 10:47:26 by yizhang       ########   odam.nl         */
+/*   Created: 2023/01/26 09:20:27 by yizhang       #+#    #+#                 */
+/*   Updated: 2023/01/26 10:14:14 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	find_med(t_data *all, char stackname);
 
-static long	*sort_array(long	*arr, long len)
+static void	sort_array(long	*arr, long len)
 {
 	long	i;
 	long	j;
@@ -38,6 +38,45 @@ static long	*sort_array(long	*arr, long len)
 		}
 		i++;
 	}
+}
+
+static void	give_index(t_node *stack, long len, long	*arr)
+{
+	long	i;
+	long	j;
+
+	i = 0;
+	while (i < len)
+	{
+		j = 0;
+		while (j < len)
+		{
+			if (stack->content == arr[i])
+				stack->index = i;
+			stack = stack->next;
+			j++;
+		}
+		i++;
+	}
+}
+
+static long	*fill_arr(t_node *stack, long len)
+{
+	long	i;
+	long	*arr;
+
+	i = 0;
+	if (len == 0 || !stack)
+		return (NULL);
+	arr = malloc(sizeof(long) * len);
+	if (!arr)
+		return (NULL);
+	while (len > i)
+	{
+		arr[i] = stack->content;
+		stack = stack->next;
+		i++;
+	}
 	return (arr);
 }
 
@@ -45,28 +84,23 @@ void	find_med(t_data *all, char stackname)
 {
 	long	*arr;
 	long	len;
-	long	i;
 	t_node	*stack;
 
-	if(stackname == 'a')
+	if (stackname == 'a')
 		stack = all->a;
 	else
 		stack = all->b;
 	if (!stack)
 		return ;
 	len = stack_len(&stack);
-	arr = malloc(sizeof(int) * len);
-	i = 0;
+	arr = NULL;
+	arr = fill_arr(stack, len);
 	if (!arr)
 		return ;
-	while (len > i)
-	{
-		arr[i] = stack->content;
-		stack = stack->next;
-		i++;
-	}
-	arr = sort_array(arr, len);
+	sort_array(arr, len);
 	all->med = arr[len / 2];
-	//free(arr);
+	all->min = arr[0];
+	all->max = arr[len / 2];
+	give_index(stack, len, arr);
+	free(arr);
 }
-

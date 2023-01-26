@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/05 20:39:47 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/06 18:38:21 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/16 17:39:08 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,17 @@ long	is_storted(t_data	*all);
 long	is_storted(t_data	*all)
 {
 	t_node	*curr;
+	long	i;
 
 	curr = all->a;
-	while (curr->next != NULL && curr != NULL)
+	i = 0;
+	find_med(all, 'a');
+	while (curr != all->a->prev)
 	{
-		if (curr->content > curr->next->content)
+		if (curr->index != i)
 			return (0);
 		curr = curr->next;
+		i++;
 	}
 	return (1);
 }
@@ -38,11 +42,16 @@ long	stack_len(t_node **top)
 	t_node	*curr;
 
 	len = 0;
-	curr = *top;
-	while (curr != NULL)
+	if (*top)
 	{
-		len++;
+		curr = *top;
+		len = 1;
 		curr = curr->next;
+		while (curr != *top)
+		{
+			len++;
+			curr = curr->next;
+		}
 	}
 	return (len);
 }
@@ -51,29 +60,29 @@ t_node	*newnode(long nb)
 {
 	t_node	*new;
 
-	new = malloc(sizeof(t_node));
+	new = (t_node *)malloc(sizeof(t_node));
 	if (!new)
 		return (NULL);
 	new->content = nb;
-	new->next = NULL;
-	new->prev = NULL;
+	new->next = new;
+	new->prev = new;
+	new->index = 0;
 	return (new);
 }
 
 void	add_back(t_node **top, t_node *new)
 {
-	t_node	*curr;
-
-	curr = *top;
 	if (!new)
-		return ;
-	if (!*top)
 	{
-		*top = new;
 		return ;
 	}
-	while (curr->next != NULL)
-		curr = curr->next;
-	curr->next = new;
-	new->prev = curr;
+	if (!*top)
+		(*top) = new;
+	else
+	{
+		new->next = *top;
+		new->prev = (*top)->prev;
+		new->prev->next = new;
+		(*top)->prev = new;
+	}
 }

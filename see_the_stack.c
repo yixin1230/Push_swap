@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.h                                        :+:    :+:            */
+/*   see_the_stack.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/12/01 09:52:06 by yizhang       #+#    #+#                 */
-/*   Updated: 2022/12/08 15:03:08 by yizhang       ########   odam.nl         */
+/*   Created: 2023/01/26 10:15:56 by yizhang       #+#    #+#                 */
+/*   Updated: 2023/01/26 10:16:55 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "push_swap.h"
+#include <stdio.h>
 
-# include "libft/libft.h"
-# include <stdarg.h>
-# include <unistd.h>
-# include <stdint.h>
+void	see_the_stack(t_node **link)
+{
+	t_node	*curr;
 
-int	ft_printf(const char *format, ...);
-int	ft_putchar(unsigned int c);
-int	ft_putstr(char *s);
-int	ft_putptr(uintptr_t p);
-int	ft_putint(long nb);
-int	length(long nb);
-int	putwhatever_num(uintptr_t p, char *s);
-
-#endif
+	if (!*link)
+		return ;
+	curr = *link;
+	while (1)
+	{
+		printf("%li:%li, ", curr->index, curr->content);
+		curr = curr->next;
+		if (curr == *link)
+			break ;
+	}
+	printf("\n");
+}

@@ -6,12 +6,13 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/03 18:53:39 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/09 10:51:23 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/26 09:47:37 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
+#include<stdio.h>
 
 static void	solve_2(t_data *all)
 {
@@ -27,7 +28,7 @@ static void	solve_3(t_data *all)
 
 	a = all->a->content;
 	b = all->a->next->content;
-	c = all->a->next->next->content;
+	c = all->a->prev->content;
 	if (a > b && a < c && b < c)
 		do_sa(all);
 	else if (a > b && a > c && b > c)
@@ -48,10 +49,10 @@ static void	solve_3(t_data *all)
 
 static void	solve_4(t_data *all)
 {
-	all->min = all->a->content;
-	find_min(all, 'a');
-	while (all->a->content != all->min)
+	while (all->a->content > all->min)
 		do_ra(all);
+	if (is_storted(all))
+		return ;
 	do_pb(all);
 	solve_3(all);
 	do_pa(all);
@@ -59,7 +60,6 @@ static void	solve_4(t_data *all)
 
 static void	solve_5(t_data *all)
 {
-	find_med(all, 'a');
 	while (all->a->content >= all->med)
 		do_ra(all);
 	do_pb(all);
@@ -78,6 +78,7 @@ void	less_than_5(t_data *all)
 	long	len;
 
 	len = stack_len(&all->a);
+	find_med(all, 'a');
 	if (len == 1)
 		return ;
 	else if (len == 2)
