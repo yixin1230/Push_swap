@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 09:20:27 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/26 09:38:35 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/26 10:14:14 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static void	sort_array(long	*arr, long len)
 		}
 		i++;
 	}
-	//return (arr);
 }
 
 static void	give_index(t_node *stack, long len, long	*arr)

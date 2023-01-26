@@ -6,13 +6,12 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/24 22:27:56 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/26 10:09:35 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/26 11:48:46 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf/libft/libft.h"
-#include <stdio.h>
 
 static int	flag_check(char *line, t_data *check)
 {
@@ -36,98 +35,60 @@ static int	flag_check(char *line, t_data *check)
 		do_pa(check);
 		return (1);
 	}
-	else if (!ft_strncmp(line, "pb", 2))
+	else if (!ft_strncmp(line, "pb\n", 3))
 	{
 		do_pb(check);
 		return (1);
 	}
-	else if (!ft_strncmp(line, "ra", 2))
+	else if (!ft_strncmp(line, "ra\n", 3))
 	{
 		do_ra(check);
 		return (1);
 	}
-	else if (!ft_strncmp(line, "rb", 2))
+	else if (!ft_strncmp(line, "rb\n", 3))
 	{
 		do_rb(check);
 		return (1);
 	}
-	else if (!ft_strncmp(line, "rr", 2))
+	else if (!ft_strncmp(line, "rr\n", 3))
 	{
 		do_rr(check);
 		return (1);
 	}
-	else if (!ft_strncmp(line, "rrb", 3))
+	else if (!ft_strncmp(line, "rrb\n", 4))
 	{
 		do_rrb(check);
 		return (1);
 	}
-	else if (!ft_strncmp(line, "rra", 3))
+	else if (!ft_strncmp(line, "rra\n", 4))
 	{
 		do_rra(check);
 		return (1);
 	}
-	else if (!ft_strncmp(line, "rrr", 3))
+	else if (!ft_strncmp(line, "rrr\n", 4))
 	{
 		do_rrr(check);
 		return (1);
 	}
+	else if (line == NULL)
+		return (1);
 	else
-		exit(1);
-	return (-1);
-}
-
-int	ps_get_next_line(int fd, char **line)
-{
-	int		nb;
-	char	buff;
-	char	str[5];
-	int		i;
-
-	if (fd < 0)
-		return (-1);
-	nb = 8;
-	i = 0;
-	while (nb > 0)
-	{
-		nb = read(fd, &buff, 1);
-		if (nb < 0)
-			return (-1);
-		str[i] = buff;
-		i++;
-		if (buff == '\n')
-			break ;
-	}
-	str[i] = '\0';
-	*line = ft_strdup(str);
-	return (1);
+		write (1, "Error\n", 6);
+	exit (1);
 }
 
 void	checker(t_data *check)
 {
 	char	*line;
 
-	while (ps_get_next_line(0, &line) == 1)
-	{
-		flag_check(line, check);
-		ps_get_next_line(0, &line);
-	}
-}
-
-static void	see_the_stack(t_node **link)
-{
-	t_node	*curr;
-
-	if (!*link)
-		return ;
-	curr = *link;
 	while (1)
 	{
-		printf("%li:%li, ", curr->index, curr->content);
-		curr = curr->next;
-		if (curr == *link)
-			break ;
+		line = get_next_line(0);
+		if (!line)
+			return ;
+		flag_check(line, check);
+		free(line);
 	}
-	printf("\n");
 }
 
 int	main(int argc, char **argv)

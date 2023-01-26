@@ -6,31 +6,12 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 09:14:39 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/26 09:56:58 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/26 10:16:32 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf/ft_printf.h"
-
-#include <stdio.h>
-
-/* static void	see_the_stack(t_node **link)
-{
-	t_node	*curr;
-
-	if (!*link)
-		return ;
-	curr = *link;
-	while (1)
-	{
-		printf("%li:%li, ", curr->index, curr->content);
-		curr = curr->next;
-		if (curr == *link)
-			break ;
-	}
-	printf("\n");
-} */
 
 int	main(int argc, char **argv)
 {
@@ -55,6 +36,5 @@ int	main(int argc, char **argv)
 	else
 		radix_sort(all);
 	free_stack_a(all);
-	//system("leaks push_swap");
 	return (0);
 }

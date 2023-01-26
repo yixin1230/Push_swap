@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   do_ra.c                                            :+:    :+:            */
+/*   see_the_stack.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/01/03 19:47:07 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/26 10:13:53 by yizhang       ########   odam.nl         */
+/*   Created: 2023/01/26 10:15:56 by yizhang       #+#    #+#                 */
+/*   Updated: 2023/01/26 10:16:55 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "push_swap.h"
+#include <stdio.h>
 
-void	do_ra(t_data *all)
+void	see_the_stack(t_node **link)
 {
-	if (!all->a)
+	t_node	*curr;
+
+	if (!*link)
 		return ;
-	if (all->a != all->a->next)
+	curr = *link;
+	while (1)
 	{
-		all->a = all->a->next;
-		if (all->do_write == 1)
-			write(1, "ra\n", 3);
+		printf("%li:%li, ", curr->index, curr->content);
+		curr = curr->next;
+		if (curr == *link)
+			break ;
 	}
+	printf("\n");
 }
