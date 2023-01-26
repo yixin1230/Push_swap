@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/03 16:29:02 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/26 16:56:21 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/26 17:22:51 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,15 +75,13 @@ static int	fill_stack_a_all(t_data *all)
 
 static int	fill_stack_a_split(t_data *all)
 {
-	size_t	i;
+	long	i;
 	long	j;
 	long	nb;
 
 	i = 0;
 	all->ptr = ft_split(all->argv[1], ' ');
-	if (all->ptr[1] == NULL)
-		return (1);
-	while (all->ptr[i])
+	while (all->ptr[i] && all->ptr[1] != NULL)
 	{
 		j = i + 1;
 		if (find_non_int(all->ptr[i]) == -1)

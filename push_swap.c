@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 09:14:39 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/26 16:40:56 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/26 17:28:42 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,11 @@ int	main(int argc, char **argv)
 		return (0);
 	all = create_data(argv, argc);
 	if (fill_stack_a(all) == -1)
-		return (0);
+		exit (1);
 	if (!all->a)
-		return (0);
+		exit (1);
 	if (is_storted(all) == 1)
-	{
-		if (all->a)
-			free_stack_a(all);
-		return (0);
-	}
+		exit (1);
 	len = stack_len(&all->a);
 	all->do_write = 1;
 	if (len <= 5)
@@ -38,5 +34,5 @@ int	main(int argc, char **argv)
 	else
 		radix_sort(all);
 	free_stack_a(all);
-	exit(0);
+	exit(EXIT_SUCCESS);
 }
