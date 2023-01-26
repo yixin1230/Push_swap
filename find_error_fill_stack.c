@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/03 16:29:02 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/17 18:14:56 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/26 16:14:05 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	print_error(t_data *all)
 	exit(1);
 }
 
-int	fill_stack_a(t_data *all)
+static int	fill_stack_a_all(t_data *all)
 {
 	long	i;
 	long	j;
@@ -69,4 +69,40 @@ int	fill_stack_a(t_data *all)
 		i++;
 	}
 	return (1);
+}
+
+static int	fill_stack_a_split(t_data *all)
+{
+	size_t	i;
+	long	j;
+	long	nb;
+	char	**ptr;
+
+	i = 0;
+	ptr = ft_split(all->argv[1], ' ');
+	while (ptr[i])
+	{
+		j = i + 1;
+		if (find_non_int(ptr[i]) == -1)
+			print_error(all);
+		nb = ft_atoi(ptr[i]);
+		while (j < all->argc)
+		{
+			if (nb == ft_atoi(ptr[j]))
+				print_error(all);
+			j++;
+		}
+		if (nb >= MAX_INT || nb <= MIN_INT)
+			print_error(all);
+		add_back(&all->a, newnode(nb));
+		i++;
+	}
+	return (1);
+}
+
+int	fill_stack_a(t_data *all)
+{
+	if (all->argc == 2)
+		return (fill_stack_a_split(all));
+	return (fill_stack_a_all(all));
 }
