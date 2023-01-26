@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/24 22:27:56 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/24 22:27:56 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/26 10:09:35 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,22 @@
 
 static int	flag_check(char *line, t_data *check)
 {
-	if (!ft_strncmp(line, "sa", 2))
+	if (!ft_strncmp(line, "sa\n", 3))
 	{
 		do_sa(check);
 		return (1);
 	}
-	else if (!ft_strncmp(line, "sb", 2))
+	else if (!ft_strncmp(line, "sb\n", 3))
 	{
 		do_sb(check);
 		return (1);
 	}
-	else if (!ft_strncmp(line, "ss", 2))
+	else if (!ft_strncmp(line, "ss\n", 3))
 	{
 		do_ss(check);
 		return (1);
 	}
-	else if (!ft_strncmp(line, "pa", 2))
+	else if (!ft_strncmp(line, "pa\n", 3))
 	{
 		do_pa(check);
 		return (1);
@@ -87,7 +87,7 @@ int	ps_get_next_line(int fd, char **line)
 		return (-1);
 	nb = 8;
 	i = 0;
-	while (nb < 0)
+	while (nb > 0)
 	{
 		nb = read(fd, &buff, 1);
 		if (nb < 0)
@@ -106,12 +106,13 @@ void	checker(t_data *check)
 {
 	char	*line;
 
-	while (ps_get_next_line(0, &line) != -1)
+	while (ps_get_next_line(0, &line) == 1)
 	{
 		flag_check(line, check);
-		line = ps_get_next_line(0, &line);
+		ps_get_next_line(0, &line);
 	}
 }
+
 static void	see_the_stack(t_node **link)
 {
 	t_node	*curr;
@@ -128,6 +129,7 @@ static void	see_the_stack(t_node **link)
 	}
 	printf("\n");
 }
+
 int	main(int argc, char **argv)
 {
 	t_data	*check;
@@ -141,6 +143,7 @@ int	main(int argc, char **argv)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	//free_all(check);
+	see_the_stack(&check->a);
+	free_stack_a(check);
 	return (0);
 }

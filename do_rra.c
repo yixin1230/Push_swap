@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/03 19:47:17 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/16 11:06:13 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/26 09:59:07 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ void	do_rra(t_data *all)
 	if (!all->a)
 		return ;
 	all->a = all->a->prev;
-	write(1, "rra\n", 4);
+	if (all->do_write == 1)
+		write(1, "rra\n", 4);
 }

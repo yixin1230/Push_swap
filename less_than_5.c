@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/03 18:53:39 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/26 09:19:20 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/26 09:47:37 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ static void	solve_4(t_data *all)
 {
 	while (all->a->content > all->min)
 		do_ra(all);
+	if (is_storted(all))
+		return ;
 	do_pb(all);
 	solve_3(all);
 	do_pa(all);

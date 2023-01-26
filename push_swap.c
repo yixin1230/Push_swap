@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 09:14:39 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/26 09:12:05 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/26 09:56:58 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,12 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	len = stack_len(&all->a);
+	all->do_write = 1;
 	if (len <= 5)
 		less_than_5(all);
 	else
 		radix_sort(all);
-	//free_stack_a(all);
+	free_stack_a(all);
 	//system("leaks push_swap");
 	return (0);
 }

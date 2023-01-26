@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/03 19:42:24 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/17 16:40:19 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/26 09:59:32 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ void	do_sa(t_data *all)
 	tmp = all->a->index;
 	all->a->index = all->a->next->index;
 	all->a->next->index = tmp;
-	write(1, "sa\n", 3);
+	if (all->do_write == 1)
+		write(1, "sa\n", 3);
 }
