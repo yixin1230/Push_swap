@@ -6,12 +6,13 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/05 20:39:47 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/16 17:39:08 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/26 19:27:30 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 t_node	*newnode(long nb);
 void	add_back(t_node **top, t_node *new);
@@ -26,6 +27,8 @@ long	is_storted(t_data	*all)
 	curr = all->a;
 	i = 0;
 	find_med(all, 'a');
+	if (!all->a)
+		return (1);
 	while (curr != all->a->prev)
 	{
 		if (curr->index != i)

@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/03 16:29:02 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/26 16:14:05 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/27 15:35:19 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ static void	print_error(t_data *all)
 	write(1, "Error\n", 6);
 	if (all->a)
 		free_stack_a(all);
+	if (all->ptr)
+		free_ptr(all->ptr);
 	exit(1);
 }
 
@@ -63,7 +65,7 @@ static int	fill_stack_a_all(t_data *all)
 				print_error(all);
 			j++;
 		}
-		if (nb >= MAX_INT || nb <= MIN_INT)
+		if (nb > MAX_INT || nb < MIN_INT)
 			print_error(all);
 		add_back(&all->a, newnode(nb));
 		i++;
@@ -73,31 +75,30 @@ static int	fill_stack_a_all(t_data *all)
 
 static int	fill_stack_a_split(t_data *all)
 {
-	size_t	i;
+	long	i;
 	long	j;
 	long	nb;
-	char	**ptr;
 
 	i = 0;
-	ptr = ft_split(all->argv[1], ' ');
-	while (ptr[i])
+	all->ptr = ft_split(all->argv[1], ' ');
+	while (all->ptr[i])
 	{
 		j = i + 1;
-		if (find_non_int(ptr[i]) == -1)
+		if (find_non_int(all->ptr[i]) == -1)
 			print_error(all);
-		nb = ft_atoi(ptr[i]);
-		while (j < all->argc)
+		nb = ft_atoi(all->ptr[i]);
+		while (j < all->argc && all->ptr[j])
 		{
-			if (nb == ft_atoi(ptr[j]))
+			if (nb == ft_atoi(all->ptr[j]))
 				print_error(all);
 			j++;
 		}
-		if (nb >= MAX_INT || nb <= MIN_INT)
+		if (nb > MAX_INT || nb < MIN_INT)
 			print_error(all);
 		add_back(&all->a, newnode(nb));
 		i++;
 	}
-	return (1);
+	return (free_ptr(all->ptr), 1);
 }
 
 int	fill_stack_a(t_data *all)

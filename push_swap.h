@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 09:16:21 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/26 11:10:20 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/26 16:50:52 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct datas
 {
 	t_node	*a;
 	t_node	*b;
+	char	**ptr;
 	char	**argv;
 	int		argc;
 	int		do_write;
@@ -61,6 +62,7 @@ long	is_storted(t_data	*all);
 void	less_than_5(t_data *all);
 void	free_stack_a(t_data *all);
 void	free_stack_b(t_data *all);
+void	free_ptr(char **ptr);
 void	free_all(t_data *all);
 void	find_med(t_data *all, char stackname);
 void	radix_sort(t_data *all);

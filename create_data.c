@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/03 16:49:48 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/26 15:35:31 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/26 16:50:13 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_data	*create_data(char **argv, int argc)
 		return (NULL);
 	all->a = NULL;
 	all->b = NULL;
+	all->ptr = NULL;
 	all->argv = argv;
 	all->argc = argc;
 	all->do_write = 0;
