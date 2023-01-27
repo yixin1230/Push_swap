@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/03 16:29:02 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/26 17:22:51 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/27 15:35:19 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static int	fill_stack_a_all(t_data *all)
 				print_error(all);
 			j++;
 		}
-		if (nb >= MAX_INT || nb <= MIN_INT)
+		if (nb > MAX_INT || nb < MIN_INT)
 			print_error(all);
 		add_back(&all->a, newnode(nb));
 		i++;
@@ -81,19 +81,19 @@ static int	fill_stack_a_split(t_data *all)
 
 	i = 0;
 	all->ptr = ft_split(all->argv[1], ' ');
-	while (all->ptr[i] && all->ptr[1] != NULL)
+	while (all->ptr[i])
 	{
 		j = i + 1;
 		if (find_non_int(all->ptr[i]) == -1)
 			print_error(all);
 		nb = ft_atoi(all->ptr[i]);
-		while (j < all->argc)
+		while (j < all->argc && all->ptr[j])
 		{
 			if (nb == ft_atoi(all->ptr[j]))
 				print_error(all);
 			j++;
 		}
-		if (nb >= MAX_INT || nb <= MIN_INT)
+		if (nb > MAX_INT || nb < MIN_INT)
 			print_error(all);
 		add_back(&all->a, newnode(nb));
 		i++;
