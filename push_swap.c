@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 09:14:39 by yizhang       #+#    #+#                 */
-/*   Updated: 2023/01/26 19:26:39 by yizhang       ########   odam.nl         */
+/*   Updated: 2023/01/27 09:08:53 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 	if (!all->a)
 		exit (1);
 	if (is_storted(all) == 1)
-		exit (1);
+		exit (0);
 	len = stack_len(&all->a);
 	all->do_write = 1;
 	if (len <= 5)
